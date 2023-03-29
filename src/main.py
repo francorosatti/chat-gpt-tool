@@ -11,10 +11,12 @@ def run():
     generator = ImageGenerator(client)
 
     prompt = input("Enter your prompt: ")
+    print("Processing your prompt...")
 
     try:
         response = generator.generate_image(prompt)
         img_url = response["data"][0]["url"]
+        print(f"Image {img_url} opened in browser")
         webbrowser.open(img_url, new=2)
     except Exception as e:
         print(f"couldn't generate image: {e}: response {response}")
