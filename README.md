@@ -15,3 +15,6 @@
 
 3. Enter your prompt:  
 ![img.png](public%2Fimg.png)
+
+4. Enjoy the result:  
+![result.png](public%2Fresult.png)
