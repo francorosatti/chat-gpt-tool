@@ -13,4 +13,5 @@
    python3 src/main.py
     ```
 
-3. Enter your prompt
+3. Enter your prompt:  
+![img.png](public%2Fimg.png)
