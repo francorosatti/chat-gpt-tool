@@ -2,7 +2,7 @@ import credentials
 import webbrowser
 
 from gpt.image.image_generator import ImageGenerator
-from platform.http_client import HttpClient
+from clients.http_client import HttpClient
 
 
 def run():
@@ -19,7 +19,7 @@ def run():
         print(f"Image {img_url} opened in browser")
         webbrowser.open(img_url, new=2)
     except Exception as e:
-        print(f"couldn't generate image: {e}: response {response}")
+        print(f"couldn't generate image: {e}")
 
 
 if __name__ == "__main__":
