@@ -1,6 +1,3 @@
-from src.platform.http_client import HttpClient
-
-
 class ImageGenerator:
     # Constants
     URL_GENERATE_IMAGE = "/images/generations"

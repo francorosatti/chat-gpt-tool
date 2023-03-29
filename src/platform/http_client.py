@@ -15,4 +15,5 @@ class HttpClient:
 
         if response.status_code <= 299:
             return response.json()
-        return response.status_code
+
+        raise Exception(response.status_code)
