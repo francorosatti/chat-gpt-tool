@@ -9,15 +9,16 @@ from utils.arguments import parse_arguments, OPERATION_TEXT, OPERATION_IMAGE, SI
 client = HttpClient(credentials.OPEN_AI_URL, credentials.OPEN_AI_API_KEY)
 
 
-def run_image(size):
+def run_image(size, prompt):
     generator = ImageGenerator(client)
 
-    prompt = input("Enter your prompt: ")
+    if prompt is None:
+        prompt = input("prompt: ")
 
     try:
         response = generator.generate_image(prompt, parse_size(size))
         img_url = response["data"][0]["url"]
-        print(f"Image {img_url} opened in browser")
+        print(f"ChatGPT: Image url {img_url}")
         webbrowser.open(img_url, new=2)
     except Exception as e:
         print(f"couldn't generate image: {e}")
@@ -32,17 +33,18 @@ def parse_size(size):
         return IMG_SIZE_SM
 
 
-def run_text(continuous):
+def run_text(continuous, prompt):
     generator = TextGenerator(client)
-    generate_next_text(generator, continuous)
+    generate_next_text(generator, continuous, prompt)
 
 
-def generate_next_text(generator, continuous):
-    prompt = input("Enter your prompt: ")
+def generate_next_text(generator, continuous, prompt=None):
+    if prompt is None:
+        prompt = input("You: ")
 
     try:
         response = generator.create_completion(prompt)
-        print(f"Chat GPT says: {response['choices'][0]['message']['content']}")
+        print(f"ChatGPT: {response['choices'][0]['message']['content']}")
     except Exception as e:
         print(f"couldn't create completion: {e}")
 
@@ -51,10 +53,10 @@ def generate_next_text(generator, continuous):
 
 
 if __name__ == "__main__":
-    operation, size, continuous = parse_arguments()
+    operation, size, continuous, prompt = parse_arguments()
     if operation == OPERATION_TEXT:
-        run_text(continuous)
+        run_text(continuous, prompt)
     elif operation == OPERATION_IMAGE:
-        run_image(size)
+        run_image(size, prompt)
     else:
         exit("unexpected operation")

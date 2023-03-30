@@ -26,8 +26,9 @@ def parse_arguments():
     parser.add_argument('-s', '--size', dest='img_size', required=False, default="512", type=str, help='Image size')
     parser.add_argument('-c', '--continuous', required=False, action='store_true',
                         help='Indicates if continuous mode is enabled')
+    parser.add_argument('-p', '--prompt', dest='prompt', required=False, type=str, help='Prompt for ChatGPT')
 
     args = parser.parse_args()
     validate_arguments(args)
 
-    return args.operation, args.img_size, args.continuous
+    return args.operation, args.img_size, args.continuous, args.prompt
