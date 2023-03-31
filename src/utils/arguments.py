@@ -27,8 +27,10 @@ def parse_arguments():
     parser.add_argument('-c', '--continuous', required=False, action='store_true',
                         help='Indicates if continuous mode is enabled')
     parser.add_argument('-p', '--prompt', dest='prompt', required=False, type=str, help='Prompt for ChatGPT')
+    parser.add_argument('-t', '--tokens', dest='max_tokens', required=False, type=int, default=50,
+                        help='Number of tokens of ChatGPT response')
 
     args = parser.parse_args()
     validate_arguments(args)
 
-    return args.operation, args.img_size, args.continuous, args.prompt
+    return args.operation, args.img_size, args.continuous, args.prompt, args.max_tokens

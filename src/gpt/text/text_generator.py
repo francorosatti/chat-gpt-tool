@@ -4,8 +4,9 @@ class TextGenerator:
 
     MODEL_GPT_3_5_TURBO = "gpt-3.5-turbo"
 
-    def __init__(self, http_client):
+    def __init__(self, http_client, max_tokens):
         self.client = http_client
+        self.max_tokens = max_tokens
 
     def create_completion(self, prompt: str):
         body = {
@@ -14,7 +15,7 @@ class TextGenerator:
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt}],
             "n": 1,
-            "max_tokens": 50,
+            "max_tokens": self.max_tokens,
             "frequency_penalty": 1.0,
             "user": "test_user",
         }

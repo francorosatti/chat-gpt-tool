@@ -35,8 +35,8 @@ def parse_size(size):
         return IMG_SIZE_SM
 
 
-def run_text(continuous, prompt):
-    generator = TextGenerator(client)
+def run_text(continuous, prompt, max_tokens):
+    generator = TextGenerator(client, max_tokens)
     generate_next_text(generator, continuous, prompt)
 
 
@@ -55,9 +55,9 @@ def generate_next_text(generator, continuous, prompt=None):
 
 
 if __name__ == "__main__":
-    operation, size, continuous, prompt = parse_arguments()
+    operation, size, continuous, prompt, max_tokens = parse_arguments()
     if operation == OPERATION_TEXT:
-        run_text(continuous, prompt)
+        run_text(continuous, prompt, max_tokens)
     elif operation == OPERATION_IMAGE:
         run_image(size, prompt)
     else:
