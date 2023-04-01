@@ -1,5 +1,13 @@
 # ChatGPT Command Tool
 
+## Table of Contents
+  * [Environment](#environment)
+  * [Arguments](#arguments)
+  * [Examples](#examples)
+    + [Text Geneartion](#text-geneartion)
+    + [Image Geneartion](#image-geneartion)
+  * [Use it from your console](#use-it-from-your-console)
+
 ## Environment
 
 Create `.env` file with the following content:
