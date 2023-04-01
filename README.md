@@ -39,10 +39,14 @@ python3 src/main.py -p "Hi"
 ![img.png](public/txt_result.png)
 
 ### Image Geneartion
-3. Enter your prompt:  
  ```sh
 python3 src/main.py -oimg -s1024 -p "ocean painting"
  ```
 
-4. Enjoy the result:  
 ![result.png](public%2Fimg_result.png)
+
+## Use it from your console
+1. Move the content of the `src` folder to `/usr/local/bin/chat-gpt-tool`
+2. Rename main.py to cgpt
+3. Add `export PATH="$PATH:/usr/local/bin/chat-gpt-tool"` to your `~/.bashrc` file
+4. Done, use cgpt command from anywhere!
